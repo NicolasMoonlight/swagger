@@ -11,7 +11,7 @@
       "name": "Get Mint Api License",
       "url": "https://mint-innovations.com"
     },
-    "version": "3.9.63.2"
+    "version": "3.9.63.6"
   },
   "paths": {
     "/api/Address/CreateAddressWithItems": {
@@ -13344,6 +13344,100 @@
         }
       }
     },
+    "/api/Devices/{parcelLockerId}/GetParcelLockerDevicesInfoByParcelLockerId": {
+      "get": {
+        "tags": [
+          "Devices"
+        ],
+        "summary": "Get ParcelLocker Devices Info By ParcelLocker ID",
+        "parameters": [
+          {
+            "name": "parcelLockerId",
+            "in": "path",
+            "description": "Parcel Locker ID",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful status code with devices info data.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ParcelLockerDeviceInfo"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ParcelLockerDeviceInfo"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ParcelLockerDeviceInfo"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Failed status code, invalid input data.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed status code, data not found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed status code, internal server error."
+          }
+        }
+      }
+    },
     "/api/DeviceUpdate/GetVersionsOfUpdate": {
       "get": {
         "tags": [
@@ -18761,19 +18855,19 @@
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"012c5ce2-e9d9-4162-8e06-4585237c854c","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"9c2bc16b-a7ab-4b85-92e4-4a19dd1e47df","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {"parcelLockerId":"4a330ec5-aa23-4969-b620-4cb837a839e2","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"62f78275-b9e5-4177-ac91-a02ea40cc6ee","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
             },
             "text/json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"012c5ce2-e9d9-4162-8e06-4585237c854c","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"9c2bc16b-a7ab-4b85-92e4-4a19dd1e47df","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {"parcelLockerId":"4a330ec5-aa23-4969-b620-4cb837a839e2","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"62f78275-b9e5-4177-ac91-a02ea40cc6ee","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
             },
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"012c5ce2-e9d9-4162-8e06-4585237c854c","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"9c2bc16b-a7ab-4b85-92e4-4a19dd1e47df","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {"parcelLockerId":"4a330ec5-aa23-4969-b620-4cb837a839e2","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"62f78275-b9e5-4177-ac91-a02ea40cc6ee","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
             }
           }
         },
@@ -18998,19 +19092,19 @@
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"3d97d62f-0c7f-49e6-87ac-793dd21de588","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"889c67e0-d19e-4b0f-bb83-7dd133e5bbd1","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {"parcelLockerId":"3529b6ff-cafe-410a-8c66-416ec09eb8c4","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"7a187ade-4e59-4452-8110-e2200a629125","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
             },
             "text/json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"3d97d62f-0c7f-49e6-87ac-793dd21de588","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"889c67e0-d19e-4b0f-bb83-7dd133e5bbd1","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {"parcelLockerId":"3529b6ff-cafe-410a-8c66-416ec09eb8c4","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"7a187ade-4e59-4452-8110-e2200a629125","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
             },
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"3d97d62f-0c7f-49e6-87ac-793dd21de588","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"889c67e0-d19e-4b0f-bb83-7dd133e5bbd1","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {"parcelLockerId":"3529b6ff-cafe-410a-8c66-416ec09eb8c4","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"7a187ade-4e59-4452-8110-e2200a629125","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
             }
           }
         },
@@ -24055,6 +24149,77 @@
           },
           "400": {
             "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/ParcelLocker/GetAllParcelLockerPrintLabelByFilter": {
+      "post": {
+        "tags": [
+          "ParcelLocker"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParcelLockerPrintedLabelFilterModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParcelLockerPrintedLabelFilterModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParcelLockerPrintedLabelFilterModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParcelLockerPrintedLabelList"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParcelLockerPrintedLabelList"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ParcelLockerPrintedLabelList"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
             "content": {
               "text/plain": {
                 "schema": {
@@ -31778,6 +31943,144 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "/api/PrinterPaperRolls/ReplacePrinterPaperRoll": {
+      "post": {
+        "tags": [
+          "PrinterPaperRolls"
+        ],
+        "summary": "Gets all stack models.",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "string",
+                "format": "uuid"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful status code with boxes stack types collection.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Failed status code, data not found.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed status code, internal server error."
+          }
+        }
+      }
+    },
+    "/api/PrinterPaperRolls/GetLatestPrinterPaperRoll/{parcelLockerId}": {
+      "get": {
+        "tags": [
+          "PrinterPaperRolls"
+        ],
+        "parameters": [
+          {
+            "name": "parcelLockerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrinterPaperRoll"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrinterPaperRoll"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/PrinterPaperRoll"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -40115,7 +40418,8 @@
         "enum": [
           "0 - CourierApp",
           "1 - ServiceApp",
-          "2 - MessageService"
+          "2 - MessageService",
+          "3 - ReminderService"
         ],
         "type": "string"
       },
@@ -43938,7 +44242,12 @@
           "17 - PowerMeter",
           "18 - Printer",
           "19 - PowerSource",
-          "20 - RgbLedStrip"
+          "20 - RgbLedStrip",
+          "21 - BleModule",
+          "22 - LteModule",
+          "23 - GpsModule",
+          "24 - EpdModule",
+          "25 - TftModule"
         ],
         "type": "string"
       },
@@ -43972,6 +44281,14 @@
           }
         },
         "additionalProperties": false
+      },
+      "LabelTypeEnum": {
+        "enum": [
+          "0 - Unknown",
+          "1 - Default",
+          "2 - Test"
+        ],
+        "type": "string"
       },
       "LocalizationCultureModel": {
         "type": "object",
@@ -45826,6 +46143,90 @@
         },
         "additionalProperties": false
       },
+      "ParcelLockerDeviceConnectionStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "deviceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "connectionStatus": {
+            "$ref": "#/components/schemas/ParcelLockerDeviceConnectionStatusEnum"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParcelLockerDeviceConnectionStatusEnum": {
+        "enum": [
+          "0 - Offline",
+          "1 - Online",
+          "-1 - Unknown"
+        ],
+        "type": "string"
+      },
+      "ParcelLockerDeviceInfo": {
+        "type": "object",
+        "properties": {
+          "settings": {
+            "$ref": "#/components/schemas/ParcelLockerDeviceSettings"
+          },
+          "status": {
+            "$ref": "#/components/schemas/ParcelLockerDeviceStatus"
+          },
+          "connectionStatus": {
+            "$ref": "#/components/schemas/ParcelLockerDeviceConnectionStatus"
+          },
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parcelLockerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "key": {
+            "type": "string",
+            "nullable": true
+          },
+          "enabled": {
+            "type": "boolean"
+          },
+          "order": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "serialNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedBy": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ParcelLockerDeviceKey": {
         "enum": [
           "0 - Unknown",
@@ -45884,6 +46285,40 @@
             "type": "string",
             "format": "uuid",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParcelLockerDeviceStatus": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "deviceId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "statusType": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "description": {
+            "type": "string",
+            "nullable": true
+          },
+          "eventTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -45979,6 +46414,10 @@
           "order": {
             "type": "integer",
             "format": "int32"
+          },
+          "serialNumber": {
+            "type": "string",
+            "nullable": true
           },
           "updatedAt": {
             "type": "string",
@@ -46386,6 +46825,122 @@
             "type": "string",
             "format": "date-time",
             "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParcelLockerPrintedLabelFilterModel": {
+        "type": "object",
+        "properties": {
+          "parcelLockerId": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "format": "uuid"
+            },
+            "nullable": true
+          },
+          "labelType": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LabelTypeEnum"
+            },
+            "nullable": true
+          },
+          "printStatus": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/PrintStatusEnum"
+            },
+            "nullable": true
+          },
+          "printedAtStartDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "printedAtEndDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "paperRollReplacementStartDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "paperRollReplacementEndDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "orderField": {
+            "type": "string",
+            "nullable": true
+          },
+          "isOrderDesc": {
+            "type": "boolean"
+          },
+          "offset": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "fetch": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParcelLockerPrintedLabelGridModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parcelLockerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "printerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "labelType": {
+            "$ref": "#/components/schemas/LabelTypeEnum"
+          },
+          "printStatus": {
+            "$ref": "#/components/schemas/PrintStatusEnum"
+          },
+          "printedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "additionalInfo": {
+            "type": "string",
+            "nullable": true
+          },
+          "paperRollReplacementDate": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParcelLockerPrintedLabelList": {
+        "type": "object",
+        "properties": {
+          "labels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ParcelLockerPrintedLabelGridModel"
+            },
+            "nullable": true
+          },
+          "totalCount": {
+            "type": "integer",
+            "format": "int32"
           }
         },
         "additionalProperties": false
@@ -47230,6 +47785,32 @@
           "fetch": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "PrintStatusEnum": {
+        "enum": [
+          "0 - Unknown",
+          "1 - Success",
+          "2 - Failed"
+        ],
+        "type": "string"
+      },
+      "PrinterPaperRoll": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "printerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "replacementDate": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
