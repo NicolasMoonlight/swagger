@@ -11,7 +11,7 @@
       "name": "Get Mint Api License",
       "url": "https://mint-innovations.com"
     },
-    "version": "3.9.63.6"
+    "version": "3.9.64.9"
   },
   "paths": {
     "/api/Address/CreateAddressWithItems": {
@@ -9670,6 +9670,53 @@
         }
       }
     },
+    "/api/CompanyParcelLockerScenarios/DeleteScenarioById/{scenarioId}": {
+      "delete": {
+        "tags": [
+          "CompanyParcelLockerScenarios"
+        ],
+        "summary": "Delete Parcel Locker Scenario by Id",
+        "parameters": [
+          {
+            "name": "scenarioId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "204": {
+            "description": "Successful status code without data."
+          },
+          "400": {
+            "description": "Failed status code, invalid input data.",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Failed status code, internal server error."
+          }
+        }
+      }
+    },
     "/api/CompanyParcelLockerSettings/GetParcelLockerSettingsByKeyAndCompanyId/{companyId}/{key}": {
       "get": {
         "tags": [
@@ -18855,19 +18902,19 @@
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"4a330ec5-aa23-4969-b620-4cb837a839e2","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"62f78275-b9e5-4177-ac91-a02ea40cc6ee","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {"parcelLockerId":"0926d61f-804e-4f98-b94e-ff8c75742ff3","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"7d8ac6a0-fa63-4c22-ba23-a869d222ea03","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
             },
             "text/json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"4a330ec5-aa23-4969-b620-4cb837a839e2","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"62f78275-b9e5-4177-ac91-a02ea40cc6ee","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {"parcelLockerId":"0926d61f-804e-4f98-b94e-ff8c75742ff3","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"7d8ac6a0-fa63-4c22-ba23-a869d222ea03","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
             },
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"4a330ec5-aa23-4969-b620-4cb837a839e2","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"62f78275-b9e5-4177-ac91-a02ea40cc6ee","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {"parcelLockerId":"0926d61f-804e-4f98-b94e-ff8c75742ff3","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"7d8ac6a0-fa63-4c22-ba23-a869d222ea03","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
             }
           }
         },
@@ -19092,19 +19139,19 @@
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"3529b6ff-cafe-410a-8c66-416ec09eb8c4","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"7a187ade-4e59-4452-8110-e2200a629125","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {"parcelLockerId":"98d69085-3b9c-4437-b488-2724df3a8c7c","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"9b16e156-dc44-4c5e-ac14-d1e21be13644","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
             },
             "text/json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"3529b6ff-cafe-410a-8c66-416ec09eb8c4","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"7a187ade-4e59-4452-8110-e2200a629125","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {"parcelLockerId":"98d69085-3b9c-4437-b488-2724df3a8c7c","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"9b16e156-dc44-4c5e-ac14-d1e21be13644","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
             },
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"3529b6ff-cafe-410a-8c66-416ec09eb8c4","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"7a187ade-4e59-4452-8110-e2200a629125","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {"parcelLockerId":"98d69085-3b9c-4437-b488-2724df3a8c7c","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"9b16e156-dc44-4c5e-ac14-d1e21be13644","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
             }
           }
         },
@@ -41666,6 +41713,9 @@
           "sizeName": {
             "type": "string",
             "nullable": true
+          },
+          "isAccessible": {
+            "type": "boolean"
           }
         },
         "additionalProperties": false
@@ -44143,6 +44193,10 @@
           "count": {
             "type": "integer",
             "format": "int32"
+          },
+          "reportedVersion": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -47223,7 +47277,7 @@
             "type": "string",
             "nullable": true
           },
-          "createAt": {
+          "createdAt": {
             "type": "string",
             "format": "date-time"
           },
