@@ -11,7 +11,7 @@
       "name": "Get Mint Api License",
       "url": "https://mint-innovations.com"
     },
-    "version": "3.9.64.9"
+    "version": "3.9.65.10"
   },
   "paths": {
     "/api/Address/CreateAddressWithItems": {
@@ -2135,19 +2135,34 @@
               "schema": {
                 "$ref": "#/components/schemas/Login"
               },
-              "example": {"email":"admin@modern.com","password":"Aa111,","rememberMe":false,"ipAddress":null}
+              "example": {
+                "email": "admin@modern.com",
+                "password": "Aa111,",
+                "rememberMe": false,
+                "ipAddress": null
+              }
             },
             "text/json": {
               "schema": {
                 "$ref": "#/components/schemas/Login"
               },
-              "example": {"email":"admin@modern.com","password":"Aa111,","rememberMe":false,"ipAddress":null}
+              "example": {
+                "email": "admin@modern.com",
+                "password": "Aa111,",
+                "rememberMe": false,
+                "ipAddress": null
+              }
             },
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Login"
               },
-              "example": {"email":"admin@modern.com","password":"Aa111,","rememberMe":false,"ipAddress":null}
+              "example": {
+                "email": "admin@modern.com",
+                "password": "Aa111,",
+                "rememberMe": false,
+                "ipAddress": null
+              }
             }
           }
         },
@@ -2327,19 +2342,34 @@
               "schema": {
                 "$ref": "#/components/schemas/Login"
               },
-              "example": {"email":"admin@modern.com","password":"Aa111,","rememberMe":false,"ipAddress":null}
+              "example": {
+                "email": "admin@modern.com",
+                "password": "Aa111,",
+                "rememberMe": false,
+                "ipAddress": null
+              }
             },
             "text/json": {
               "schema": {
                 "$ref": "#/components/schemas/Login"
               },
-              "example": {"email":"admin@modern.com","password":"Aa111,","rememberMe":false,"ipAddress":null}
+              "example": {
+                "email": "admin@modern.com",
+                "password": "Aa111,",
+                "rememberMe": false,
+                "ipAddress": null
+              }
             },
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/Login"
               },
-              "example": {"email":"admin@modern.com","password":"Aa111,","rememberMe":false,"ipAddress":null}
+              "example": {
+                "email": "admin@modern.com",
+                "password": "Aa111,",
+                "rememberMe": false,
+                "ipAddress": null
+              }
             }
           }
         },
@@ -5284,13 +5314,19 @@
           "description": "The responce.",
           "content": {
             "application/json": {
-              "schema": { }
+              "schema": {
+
+              }
             },
             "text/json": {
-              "schema": { }
+              "schema": {
+
+              }
             },
             "application/*+json": {
-              "schema": { }
+              "schema": {
+
+              }
             }
           }
         },
@@ -11433,6 +11469,43 @@
         }
       }
     },
+    "/api/Configurator/{parcelLockerId}/ReloadLocksOffGrid": {
+      "post": {
+        "tags": [
+          "Configurator"
+        ],
+        "summary": "Call method for research locks",
+        "parameters": [
+          {
+            "name": "parcelLockerId",
+            "in": "path",
+            "description": "The parcel locker identifier.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "Request to auto configure parcel locker successfully sent."
+          },
+          "400": {
+            "description": "Failed status code, invalid input data."
+          },
+          "418": {
+            "description": "Failure to send request to auto configure parcel locker."
+          },
+          "500": {
+            "description": "Failed status code, internal server error."
+          }
+        }
+      }
+    },
     "/api/Configurator/{parcelLockerId}/AutoSearchProximitySensors": {
       "post": {
         "tags": [
@@ -11888,7 +11961,7 @@
             "description": "OK"
           },
           "204": {
-            "description": "Request tochange parcel locker configuration port successfully sent."
+            "description": "Request to change parcel locker configuration port successfully sent."
           },
           "400": {
             "description": "Failed status code, invalid input data."
@@ -14426,6 +14499,410 @@
         }
       }
     },
+    "/api/EventMonitoring/GetReportForStatusParcelLockers/{companyId}": {
+      "get": {
+        "tags": [
+          "EventMonitoring"
+        ],
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/EventMonitoring/GetReportBoxesSizes/{companyId}": {
+      "get": {
+        "tags": [
+          "EventMonitoring"
+        ],
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/EventMonitoring/GetOrCreateLayout/{companyId}": {
+      "post": {
+        "tags": [
+          "EventMonitoring"
+        ],
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string",
+                  "format": "uuid"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "I'm a teapot",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/EventMonitoring/SaveLayout/{layoutId}": {
+      "post": {
+        "tags": [
+          "EventMonitoring"
+        ],
+        "parameters": [
+          {
+            "name": "layoutId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WidgetModel"
+                }
+              }
+            },
+            "text/json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WidgetModel"
+                }
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/components/schemas/WidgetModel"
+                }
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "I'm a teapot",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/EventMonitoring/GetAllWidgets/{layoutId}": {
+      "get": {
+        "tags": [
+          "EventMonitoring"
+        ],
+        "parameters": [
+          {
+            "name": "layoutId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WidgetModel"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WidgetModel"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/WidgetModel"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/api/Intrusion/GetAllNotChecked": {
       "get": {
         "tags": [
@@ -15822,6 +16299,80 @@
           },
           "500": {
             "description": "Failure to mark as checked issue reports by filter for current user."
+          }
+        }
+      }
+    },
+    "/api/Issues/GetReportByCompanyIdAndType/{companyId}/{type}": {
+      "get": {
+        "tags": [
+          "Issues"
+        ],
+        "parameters": [
+          {
+            "name": "companyId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "type",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "$ref": "#/components/schemas/IssueReportTypeEnum"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -18902,19 +19453,64 @@
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"0926d61f-804e-4f98-b94e-ff8c75742ff3","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"7d8ac6a0-fa63-4c22-ba23-a869d222ea03","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {
+                "parcelLockerId": "788933d0-cf5e-4241-a70b-33e4d7515e60",
+                "parcelNumber": "1238899",
+                "customerPhone": "0995417798",
+                "customerEmail": "admin@modern.com",
+                "customerFullName": "Test User",
+                "parcelItems": [
+                  {
+                    "boxId": "5e8f7d6c-6fb7-4d9b-b67a-533baefd7455",
+                    "parcelItemNumber": null,
+                    "descriptions": null
+                  }
+                ],
+                "extensionParameter": null,
+                "expirationDate": null
+              }
             },
             "text/json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"0926d61f-804e-4f98-b94e-ff8c75742ff3","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"7d8ac6a0-fa63-4c22-ba23-a869d222ea03","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {
+                "parcelLockerId": "788933d0-cf5e-4241-a70b-33e4d7515e60",
+                "parcelNumber": "1238899",
+                "customerPhone": "0995417798",
+                "customerEmail": "admin@modern.com",
+                "customerFullName": "Test User",
+                "parcelItems": [
+                  {
+                    "boxId": "5e8f7d6c-6fb7-4d9b-b67a-533baefd7455",
+                    "parcelItemNumber": null,
+                    "descriptions": null
+                  }
+                ],
+                "extensionParameter": null,
+                "expirationDate": null
+              }
             },
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"0926d61f-804e-4f98-b94e-ff8c75742ff3","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"7d8ac6a0-fa63-4c22-ba23-a869d222ea03","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {
+                "parcelLockerId": "788933d0-cf5e-4241-a70b-33e4d7515e60",
+                "parcelNumber": "1238899",
+                "customerPhone": "0995417798",
+                "customerEmail": "admin@modern.com",
+                "customerFullName": "Test User",
+                "parcelItems": [
+                  {
+                    "boxId": "5e8f7d6c-6fb7-4d9b-b67a-533baefd7455",
+                    "parcelItemNumber": null,
+                    "descriptions": null
+                  }
+                ],
+                "extensionParameter": null,
+                "expirationDate": null
+              }
             }
           }
         },
@@ -19139,19 +19735,64 @@
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"98d69085-3b9c-4437-b488-2724df3a8c7c","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"9b16e156-dc44-4c5e-ac14-d1e21be13644","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {
+                "parcelLockerId": "c09b23d8-255c-4d11-90c4-7cf9c19f416e",
+                "parcelNumber": "1238899",
+                "customerPhone": "0995417798",
+                "customerEmail": "admin@modern.com",
+                "customerFullName": "Test User",
+                "parcelItems": [
+                  {
+                    "boxId": "59485da9-9757-4d4f-b186-0693504bea67",
+                    "parcelItemNumber": null,
+                    "descriptions": null
+                  }
+                ],
+                "extensionParameter": null,
+                "expirationDate": null
+              }
             },
             "text/json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"98d69085-3b9c-4437-b488-2724df3a8c7c","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"9b16e156-dc44-4c5e-ac14-d1e21be13644","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {
+                "parcelLockerId": "c09b23d8-255c-4d11-90c4-7cf9c19f416e",
+                "parcelNumber": "1238899",
+                "customerPhone": "0995417798",
+                "customerEmail": "admin@modern.com",
+                "customerFullName": "Test User",
+                "parcelItems": [
+                  {
+                    "boxId": "59485da9-9757-4d4f-b186-0693504bea67",
+                    "parcelItemNumber": null,
+                    "descriptions": null
+                  }
+                ],
+                "extensionParameter": null,
+                "expirationDate": null
+              }
             },
             "application/*+json": {
               "schema": {
                 "$ref": "#/components/schemas/CreateParcel"
               },
-              "example": {"parcelLockerId":"98d69085-3b9c-4437-b488-2724df3a8c7c","parcelNumber":"1238899","customerPhone":"0995417798","customerEmail":"admin@modern.com","customerFullName":"Test User","parcelItems":[{"boxId":"9b16e156-dc44-4c5e-ac14-d1e21be13644","parcelItemNumber":null,"descriptions":null}],"extensionParameter":null,"expirationDate":null}
+              "example": {
+                "parcelLockerId": "c09b23d8-255c-4d11-90c4-7cf9c19f416e",
+                "parcelNumber": "1238899",
+                "customerPhone": "0995417798",
+                "customerEmail": "admin@modern.com",
+                "customerFullName": "Test User",
+                "parcelItems": [
+                  {
+                    "boxId": "59485da9-9757-4d4f-b186-0693504bea67",
+                    "parcelItemNumber": null,
+                    "descriptions": null
+                  }
+                ],
+                "extensionParameter": null,
+                "expirationDate": null
+              }
             }
           }
         },
@@ -20373,6 +21014,90 @@
           },
           "500": {
             "description": "Failed status code, internal server error."
+          }
+        }
+      }
+    },
+    "/api/Parcel/GetOverdueParcelPickupInfo/{parcelNumber}": {
+      "get": {
+        "tags": [
+          "Parcel"
+        ],
+        "summary": "Get info about parcel not picked up by the customer on time.",
+        "parameters": [
+          {
+            "name": "parcelNumber",
+            "in": "path",
+            "description": "Parcel number.",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/OverdueParcelPickUpInfo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OverdueParcelPickUpInfo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OverdueParcelPickUpInfo"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -22161,6 +22886,52 @@
           },
           "500": {
             "description": "Failed status code, internal server error."
+          }
+        }
+      }
+    },
+    "/api/Parcel/AnyParcelsByParcelLocker/{parcelLockerId}": {
+      "get": {
+        "tags": [
+          "Parcel"
+        ],
+        "parameters": [
+          {
+            "name": "parcelLockerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
           }
         }
       }
@@ -24007,7 +24778,7 @@
         }
       }
     },
-    "/api/ParcelLocker/ChangeConfigurationFiles/{companyId}": {
+    "/api/ParcelLocker/ChangeConfigurationFiles/{companyId}/{isNeedToForceApply}": {
       "put": {
         "tags": [
           "ParcelLocker"
@@ -24020,6 +24791,14 @@
             "schema": {
               "type": "string",
               "format": "uuid"
+            }
+          },
+          {
+            "name": "isNeedToForceApply",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "boolean"
             }
           }
         ],
@@ -24267,6 +25046,71 @@
           },
           "404": {
             "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/ParcelLocker/{parcelLockerId}/SetActivationState": {
+      "post": {
+        "tags": [
+          "ParcelLocker"
+        ],
+        "parameters": [
+          {
+            "name": "parcelLockerId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParcelLockerActivationStateChangeModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParcelLockerActivationStateChangeModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ParcelLockerActivationStateChangeModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
             "content": {
               "text/plain": {
                 "schema": {
@@ -31994,6 +32838,303 @@
         }
       }
     },
+    "/api/PartnerDelegatedParcels/AuthorizePartnerForDelivery/{parcelId}/{partnerCompanyId}": {
+      "post": {
+        "tags": [
+          "PartnerDelegatedParcels"
+        ],
+        "summary": "Authorizes a partner company to deliver a specific parcel.\r\nPerforms all required security and availability checks before granting delivery permission:\r\n\u003Clist type=\"bullet\"\u003E\u003Citem\u003EChecks if the provided parcel and partner company IDs are valid (not empty).\u003C/item\u003E\u003Citem\u003EVerifies that the partner is available for the current user's company.\u003C/item\u003E\u003Citem\u003EValidates parcel access for the current user.\u003C/item\u003E\u003Citem\u003EEnsures the parcel is placed in a parcel locker and checks its availability for both the user and the partner company.\u003C/item\u003E\u003Citem\u003EGrants delivery authorization to the partner via the business logic service.\u003C/item\u003E\u003C/list\u003E",
+        "parameters": [
+          {
+            "name": "parcelId",
+            "in": "path",
+            "description": "The unique identifier of the parcel.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "partnerCompanyId",
+            "in": "path",
+            "description": "The unique identifier of the partner company.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/PartnerDelegatedParcels/RevokePartnerDelivery/{parcelId}/{partnerCompanyId}": {
+      "post": {
+        "tags": [
+          "PartnerDelegatedParcels"
+        ],
+        "summary": "Revokes delivery authorization for a partner company for a specific parcel.\r\nPerforms all required security and consistency checks before removing delivery permission:\r\n\u003Clist type=\"bullet\"\u003E\u003Citem\u003EChecks if the provided parcel and partner company IDs are valid (not empty).\u003C/item\u003E\u003Citem\u003EVerifies that the partner is available for the current user's company.\u003C/item\u003E\u003Citem\u003EValidates parcel access for the current user.\u003C/item\u003E\u003Citem\u003EEnsures that the partner was previously authorized for the specified parcel.\u003C/item\u003E\u003Citem\u003ERevokes delivery authorization via the business logic service.\u003C/item\u003E\u003C/list\u003E",
+        "parameters": [
+          {
+            "name": "parcelId",
+            "in": "path",
+            "description": "The unique identifier of the parcel.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          },
+          {
+            "name": "partnerCompanyId",
+            "in": "path",
+            "description": "The unique identifier of the partner company.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/PartnerDelegatedParcels/AuthorizedPartnersForParcel/{parcelId}": {
+      "get": {
+        "tags": [
+          "PartnerDelegatedParcels"
+        ],
+        "summary": "Gets the list of partner company IDs currently authorized to deliver the specified parcel.",
+        "parameters": [
+          {
+            "name": "parcelId",
+            "in": "path",
+            "description": "The unique identifier of the parcel.",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "format": "uuid"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PartnerParcelDeliveryPermissionExt"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PartnerParcelDeliveryPermissionExt"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/PartnerParcelDeliveryPermissionExt"
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/PartnerDelegatedParcels/Open": {
+      "post": {
+        "tags": [
+          "PartnerDelegatedParcels"
+        ],
+        "summary": "Handles a partner's request to open a parcel assigned for delivery.\r\nChecks delivery authorization, parcel existence, and placement availability before opening the corresponding box.\r\nLogs each request with additional context.",
+        "requestBody": {
+          "description": "The open reservation request model containing the parcel (reservation) ID.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OpenReservation"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/OpenReservation"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/OpenReservation"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
     "/api/PrinterPaperRolls/ReplacePrinterPaperRoll": {
       "post": {
         "tags": [
@@ -34741,7 +35882,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ParcelStatusesReport"
+                    "$ref": "#/components/schemas/ParcelItemTimeInBoxReportModel"
                   }
                 }
               },
@@ -34749,7 +35890,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ParcelStatusesReport"
+                    "$ref": "#/components/schemas/ParcelItemTimeInBoxReportModel"
                   }
                 }
               },
@@ -34757,7 +35898,109 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/ParcelStatusesReport"
+                    "$ref": "#/components/schemas/ParcelItemTimeInBoxReportModel"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "418": {
+            "description": "I'm a teapot",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/api/Statistic/GetParcelLockerPrintedLabelsReport": {
+      "post": {
+        "tags": [
+          "Statistic"
+        ],
+        "summary": "Gets the printer roll paper all printed labels report.",
+        "requestBody": {
+          "description": "The filter.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportFilterForPLPrintedLabelsDateModel"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportFilterForPLPrintedLabelsDateModel"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportFilterForPLPrintedLabelsDateModel"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ParcelLockerPrintedLabelsReport"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ParcelLockerPrintedLabelsReport"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/ParcelLockerPrintedLabelsReport"
                   }
                 }
               }
@@ -42419,6 +43662,10 @@
             "type": "string",
             "format": "byte",
             "nullable": true
+          },
+          "printingOperationId": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -43367,6 +44614,10 @@
           },
           "createdParcelDeliveryType": {
             "$ref": "#/components/schemas/ParcelDeliveryType"
+          },
+          "printingOperationId": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -44126,15 +45377,22 @@
       "IssueReport": {
         "type": "object",
         "properties": {
-          "parcelTerminalName": {
-            "type": "string",
-            "nullable": true
-          },
           "company": {
             "type": "string",
             "nullable": true
           },
+          "comments": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/IssueCommentModel"
+            },
+            "nullable": true
+          },
           "updatedByUser": {
+            "type": "string",
+            "nullable": true
+          },
+          "parcelTerminalName": {
             "type": "string",
             "nullable": true
           },
@@ -44156,13 +45414,6 @@
           },
           "description": {
             "type": "string",
-            "nullable": true
-          },
-          "comments": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/IssueCommentModel"
-            },
             "nullable": true
           },
           "type": {
@@ -44302,6 +45553,13 @@
           "23 - GpsModule",
           "24 - EpdModule",
           "25 - TftModule"
+        ],
+        "type": "string"
+      },
+      "IssueReportWidgetContentTypeEnum": {
+        "enum": [
+          "0 - StatusSummary",
+          "1 - LastLogs"
         ],
         "type": "string"
       },
@@ -44781,6 +46039,24 @@
           "parcelLockerId": {
             "type": "string",
             "format": "uuid"
+          }
+        },
+        "additionalProperties": false
+      },
+      "OverdueParcelPickUpInfo": {
+        "type": "object",
+        "properties": {
+          "parcelNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "courierFullName": {
+            "type": "string",
+            "nullable": true
+          },
+          "pickUpTime": {
+            "type": "string",
+            "format": "date-time"
           }
         },
         "additionalProperties": false
@@ -45720,6 +46996,84 @@
         ],
         "type": "string"
       },
+      "ParcelItemTimeInBoxReportModel": {
+        "type": "object",
+        "properties": {
+          "parcelId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parcelLockerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "boxId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parcelItemId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parcelItemNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "parcelNumber": {
+            "type": "string",
+            "nullable": true
+          },
+          "extensionParameter": {
+            "type": "string",
+            "nullable": true
+          },
+          "parcelLockerName": {
+            "type": "string",
+            "nullable": true
+          },
+          "locationName": {
+            "type": "string",
+            "nullable": true
+          },
+          "locationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "boxNumber": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "boxSize": {
+            "type": "string",
+            "nullable": true
+          },
+          "beginDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "beginStatus": {
+            "$ref": "#/components/schemas/ParcelItemStatusEnum"
+          },
+          "endDate": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "endStatus": {
+            "$ref": "#/components/schemas/ParcelItemStatusEnum"
+          },
+          "storageTimeSeconds": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "storageTimeDays": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
       "ParcelItemsStatusesStatistic": {
         "type": "object",
         "properties": {
@@ -45833,6 +47187,19 @@
           "installationDate": {
             "type": "string",
             "format": "date-time",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ParcelLockerActivationStateChangeModel": {
+        "type": "object",
+        "properties": {
+          "isActive": {
+            "type": "boolean"
+          },
+          "reason": {
+            "type": "string",
             "nullable": true
           }
         },
@@ -46060,6 +47427,22 @@
       "ParcelLockerDetails": {
         "type": "object",
         "properties": {
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "createdBy": {
+            "type": "string",
+            "format": "uuid"
+          },
           "currentVersion": {
             "type": "string",
             "nullable": true
@@ -46197,35 +47580,6 @@
         },
         "additionalProperties": false
       },
-      "ParcelLockerDeviceConnectionStatus": {
-        "type": "object",
-        "properties": {
-          "id": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "deviceId": {
-            "type": "string",
-            "format": "uuid"
-          },
-          "connectionStatus": {
-            "$ref": "#/components/schemas/ParcelLockerDeviceConnectionStatusEnum"
-          },
-          "description": {
-            "type": "string",
-            "nullable": true
-          },
-          "eventTime": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "createdAt": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "additionalProperties": false
-      },
       "ParcelLockerDeviceConnectionStatusEnum": {
         "enum": [
           "0 - Offline",
@@ -46242,9 +47596,6 @@
           },
           "status": {
             "$ref": "#/components/schemas/ParcelLockerDeviceStatus"
-          },
-          "connectionStatus": {
-            "$ref": "#/components/schemas/ParcelLockerDeviceConnectionStatus"
           },
           "id": {
             "type": "string",
@@ -46354,7 +47705,7 @@
             "type": "string",
             "format": "uuid"
           },
-          "statusType": {
+          "statusValueType": {
             "type": "string",
             "nullable": true
           },
@@ -46362,9 +47713,24 @@
             "type": "integer",
             "format": "int32"
           },
-          "description": {
+          "statusDescription": {
             "type": "string",
             "nullable": true
+          },
+          "statusChangedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "connectionStatus": {
+            "$ref": "#/components/schemas/ParcelLockerDeviceConnectionStatusEnum"
+          },
+          "connectionStatusDescription": {
+            "type": "string",
+            "nullable": true
+          },
+          "connectionStatusChangedAt": {
+            "type": "string",
+            "format": "date-time"
           },
           "eventTime": {
             "type": "string",
@@ -46999,6 +48365,51 @@
         },
         "additionalProperties": false
       },
+      "ParcelLockerPrintedLabelsReport": {
+        "type": "object",
+        "properties": {
+          "parcelLockerId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "replacementDate": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "replacementTime": {
+            "type": "string",
+            "format": "date-span"
+          },
+          "locationId": {
+            "type": "string",
+            "nullable": true
+          },
+          "labelsPrintedAll": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "labelsPrintedWithParcelDropoff": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "labelsPrintedWithoutParcelDropoff": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "labelsPrintedOther": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "address": {
+            "$ref": "#/components/schemas/AddressWithItems"
+          }
+        },
+        "additionalProperties": false
+      },
       "ParcelLockerReportBoxParameter": {
         "type": "object",
         "properties": {
@@ -47277,7 +48688,7 @@
             "type": "string",
             "nullable": true
           },
-          "createdAt": {
+          "createAt": {
             "type": "string",
             "format": "date-time"
           },
@@ -47680,6 +49091,62 @@
         ],
         "type": "string"
       },
+      "PartnerParcelDeliveryPermissionExt": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "parcelId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "partnerCompanyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "partnerCompanyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "ownerCompanyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "ownerCompanyName": {
+            "type": "string",
+            "nullable": true
+          },
+          "authorizedAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "authorizedBy": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "authorizedByUserName": {
+            "type": "string",
+            "nullable": true
+          },
+          "revokedAt": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "revokedBy": {
+            "type": "string",
+            "format": "uuid",
+            "nullable": true
+          },
+          "revokedByUserName": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "PasswordAssignmentEnum": {
         "enum": [
           "0 - Anydesk",
@@ -47894,7 +49361,9 @@
             "nullable": true
           }
         },
-        "additionalProperties": { }
+        "additionalProperties": {
+
+        }
       },
       "ProviderBase": {
         "type": "object",
@@ -48279,6 +49748,24 @@
         },
         "additionalProperties": false
       },
+      "ReportFilterForPLPrintedLabelsDateModel": {
+        "type": "object",
+        "properties": {
+          "companyId": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "startDateTime": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "endDateTime": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
       "ReportLogLevelEnum": {
         "enum": [
           "0 - None",
@@ -48495,6 +49982,15 @@
         ],
         "type": "string"
       },
+      "ScanStatusType": {
+        "enum": [
+          "0 - Unknown",
+          "1 - Pending",
+          "2 - Success",
+          "3 - Failed"
+        ],
+        "type": "string"
+      },
       "ScannedCodeTypeEnum": {
         "enum": [
           "0 - Unknown",
@@ -48545,6 +50041,9 @@
           },
           "codeEnteringType": {
             "$ref": "#/components/schemas/CodeEnteringTypeEnum"
+          },
+          "scanStatus": {
+            "$ref": "#/components/schemas/ScanStatusType"
           }
         },
         "additionalProperties": false
@@ -48608,6 +50107,13 @@
           },
           "isOrderDesc": {
             "type": "boolean"
+          },
+          "scanStatusList": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ScanStatusType"
+            },
+            "nullable": true
           },
           "offset": {
             "type": "integer",
@@ -49458,7 +50964,8 @@
         "enum": [
           "0 - Localization",
           "1 - Scenarios",
-          "2 - Theme"
+          "2 - Theme",
+          "3 - DisplayConfigs"
         ],
         "type": "string"
       },
@@ -50437,6 +51944,71 @@
           }
         },
         "additionalProperties": false
+      },
+      "WidgetModel": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "row": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "col": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "size": {
+            "$ref": "#/components/schemas/WidgetSizeEnum"
+          },
+          "type": {
+            "$ref": "#/components/schemas/WidgetTypeEnum"
+          },
+          "reportType": {
+            "$ref": "#/components/schemas/IssueReportTypeEnum"
+          },
+          "issuesWidgetContentType": {
+            "$ref": "#/components/schemas/IssueReportWidgetContentTypeEnum"
+          },
+          "logLevels": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ReportLogLevelEnum"
+            },
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "WidgetSizeEnum": {
+        "enum": [
+          "0 - Small",
+          "1 - Medium",
+          "2 - Large"
+        ],
+        "type": "string"
+      },
+      "WidgetTypeEnum": {
+        "enum": [
+          "0 - Issues",
+          "1 - Connections",
+          "2 - BoxesStatuses"
+        ],
+        "type": "string"
       }
     },
     "securitySchemes": {
@@ -50450,7 +52022,7 @@
   },
   "security": [
     {
-      "Bearer": [ ]
+      "Bearer": []
     }
   ]
 }
